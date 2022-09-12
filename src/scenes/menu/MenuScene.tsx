@@ -1,11 +1,5 @@
 import { Animate, rotate } from "@hmans/things"
-import {
-  CameraShake,
-  OrbitControls,
-  PerspectiveCamera,
-  useGLTF
-} from "@react-three/drei"
-import { Rotation3D } from "shader-composer"
+import { PerspectiveCamera, useGLTF } from "@react-three/drei"
 import { Skybox } from "../../common/Skybox"
 import { AsteroidField } from "./AsteroidField"
 import { Dust } from "./vfx/Dust"
