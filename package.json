@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@hmans/things": "^0.0.6",
     "@react-three/drei": "^9.29.1",
     "@react-three/fiber": "^8.7.3",
     "camera-composer": "^0.0.1",
