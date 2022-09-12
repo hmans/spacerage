@@ -9,6 +9,7 @@ specifiers:
   '@types/three': ^0.144.0
   '@vitejs/plugin-react': ^2.1.0
   camera-composer: ^0.0.1
+  gsap: ^3.11.1
   input-composer: ^0.0.1
   material-composer: ^0.2.0
   material-composer-r3f: ^0.2.0
@@ -33,6 +34,7 @@ dependencies:
   '@react-three/drei': 9.29.1_67uyhnksjibsr7wxhrnlyuwcrm
   '@react-three/fiber': 8.7.3_ww22p6cticflcq7fk2rysgxj34
   camera-composer: 0.0.1_biqbaboplfbrettd7655fr4n2y
+  gsap: 3.11.1
   input-composer: 0.0.1
   material-composer: 0.2.0_three@0.144.0
   material-composer-r3f: 0.2.0_ajwca2wyckw7cygscqdaur3aoq
@@ -1101,6 +1103,10 @@ packages:
 
   /glsl-noise/0.0.0:
     resolution: {integrity: sha512-b/ZCF6amfAUb7dJM/MxRs7AetQEahYzJ8PtgfrmEdtw6uyGOr+ZSGtgjFm6mfsBkxJ4d2W7kg+Nlqzqvn3Bc0w==}
+    dev: false
+
+  /gsap/3.11.1:
+    resolution: {integrity: sha512-UKuJ0UPhntFHMwT6URFQ4cTQv88xc7Kd9Dhxt7qX9IPhC+d+/a5wKW5E5Vn33hZ53nBI1JfApcEbzKgXkcuPZw==}
     dev: false
 
   /has-flag/3.0.0:
