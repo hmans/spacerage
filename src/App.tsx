@@ -1,6 +1,6 @@
-import { RenderCanvas, RenderPipeline } from "render-composer";
-import { MenuScene } from "./scenes/menu/MenuScene";
-import { GameState } from "./state";
+import { RenderCanvas, RenderPipeline } from "render-composer"
+import { MenuScene } from "./scenes/menu/MenuScene"
+import { GameState } from "./state"
 
 export const App = () => (
   <RenderCanvas>
@@ -10,4 +10,4 @@ export const App = () => (
       </GameState.Match>
     </RenderPipeline>
   </RenderCanvas>
-);
+)

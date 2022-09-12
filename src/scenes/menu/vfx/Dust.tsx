@@ -1,5 +1,5 @@
-import { composable, modules } from "material-composer-r3f";
-import { between, plusMinus } from "randomish";
+import { composable, modules } from "material-composer-r3f"
+import { between, plusMinus } from "randomish"
 import {
   Add,
   Float,
@@ -9,30 +9,29 @@ import {
   Mul,
   Rotation3DZ,
   ScaleAndOffset,
-  Vec3,
-} from "shader-composer";
-import { Random } from "shader-composer-toybox";
-import { Color, DoubleSide } from "three";
-import { InstanceSetupCallback } from "vfx-composer";
-import { Emitter, Particles } from "vfx-composer-r3f";
+  Vec3
+} from "shader-composer"
+import { Random } from "shader-composer-toybox"
+import { Color, DoubleSide } from "three"
+import { InstanceSetupCallback } from "vfx-composer"
+import { Emitter, Particles } from "vfx-composer-r3f"
 
 /* TODO: extract this into vfx-composer */
 
 export type DustProps = {
-  prespawn: number;
-  rate: number;
-};
+  prespawn?: number
+  rate?: number
+}
 
 export const Dust = ({ rate = 100, prespawn = 1000 }: DustProps) => {
-  const id = Float(InstanceID, { varying: true });
+  const id = Float(InstanceID, { varying: true })
 
-  const getRandom = (offset: Input<"float">) =>
-    Random(Add(Mul(id, 50), offset));
+  const getRandom = (offset: Input<"float">) => Random(Add(Mul(id, 50), offset))
 
   const setup: InstanceSetupCallback = ({ position, rotation, scale }) => {
-    position.set(plusMinus(30), plusMinus(30), plusMinus(30));
-    rotation.random();
-  };
+    position.set(plusMinus(30), plusMinus(30), plusMinus(30))
+    rotation.random()
+  }
 
   return (
     <group>
@@ -64,5 +63,5 @@ export const Dust = ({ rate = 100, prespawn = 1000 }: DustProps) => {
         <Emitter rate={rate} setup={setup} />
       </Particles>
     </group>
-  );
-};
+  )
+}

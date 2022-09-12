@@ -1,6 +1,6 @@
-import { Animate, rotate } from "@hmans/things";
-import { OrbitControls } from "@react-three/drei";
-import { Dust } from "./vfx/Dust";
+import { Animate, rotate } from "@hmans/things"
+import { OrbitControls } from "@react-three/drei"
+import { Dust } from "./vfx/Dust"
 
 export const MenuScene = () => (
   <group>
@@ -18,4 +18,4 @@ export const MenuScene = () => (
       </mesh>
     </Animate>
   </group>
-);
+)
