@@ -1,4 +1,11 @@
-import { OrbitControls, useGLTF } from "@react-three/drei"
+import { Animate, rotate } from "@hmans/things"
+import {
+  CameraShake,
+  OrbitControls,
+  PerspectiveCamera,
+  useGLTF
+} from "@react-three/drei"
+import { Rotation3D } from "shader-composer"
 import { Skybox } from "../../common/Skybox"
 import { AsteroidField } from "./AsteroidField"
 import { Dust } from "./vfx/Dust"
@@ -10,7 +17,10 @@ export const MenuScene = () => (
 
     <Dust />
     <Skybox />
-    <OrbitControls autoRotate autoRotateSpeed={0.5} />
+
+    <Animate fun={rotate(0, -0.01, 0)}>
+      <PerspectiveCamera makeDefault />
+    </Animate>
 
     <AsteroidField />
   </group>
