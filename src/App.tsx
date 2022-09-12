@@ -4,7 +4,11 @@ import { GameState } from "./state"
 
 export const App = () => (
   <RenderCanvas>
-    <RenderPipeline bloom antiAliasing vignette>
+    <RenderPipeline
+      bloom={{ luminanceThreshold: 0.2, intensity: 10 }}
+      antiAliasing
+      vignette
+    >
       <GameState.Match state="menu">
         <MenuScene />
       </GameState.Match>

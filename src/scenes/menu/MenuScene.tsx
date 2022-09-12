@@ -1,15 +1,15 @@
-import { Animate, rotate } from "@hmans/things"
 import { OrbitControls, useGLTF } from "@react-three/drei"
+import { Skybox } from "../../common/Skybox"
 import { AsteroidField } from "./AsteroidField"
 import { Dust } from "./vfx/Dust"
 
 export const MenuScene = () => (
   <group>
-    <ambientLight intensity={0.2} />
-    <directionalLight position={[30, 15, 15]} intensity={1} />
+    <ambientLight intensity={0.1} />
+    <directionalLight position={[30, 0, -30]} intensity={1} />
 
     <Dust />
-
+    <Skybox />
     <OrbitControls autoRotate autoRotateSpeed={0.5} />
 
     <AsteroidField />

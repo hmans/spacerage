@@ -1,5 +1,5 @@
 import { useGLTF } from "@react-three/drei"
-import { between, insideSphere } from "randomish"
+import { between, insideSphere, power } from "randomish"
 import { Material, Mesh, Vector3 } from "three"
 import { Emitter, Particles } from "vfx-composer-r3f"
 
@@ -20,7 +20,7 @@ export const AsteroidField = () => {
           setup={({ position, rotation, scale }) => {
             const pos = insideSphere(1000)
             position.copy(pos as Vector3)
-            scale.setScalar(between(0.8, 2))
+            scale.setScalar(0.5 + power(5) * 10)
             rotation.random()
           }}
         />

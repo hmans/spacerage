@@ -44,9 +44,9 @@ export const Dust = ({ lifetime = 60, rate = 50 }: DustProps) => {
 
         <composable.meshBasicMaterial
           side={DoubleSide}
-          color={new Color("white").multiplyScalar(1.1)}
+          color={new Color("#999")}
         >
-          <modules.Scale scale={ScaleAndOffset(getRandom(765), 0.05, 0.02)} />
+          <modules.Scale scale={ScaleAndOffset(getRandom(765), 0.03, 0.01)} />
           <modules.Scale scale={Smoothstep(0, 0.05, particles.progress)} />
           <modules.Scale scale={Smoothstep(1, 0.95, particles.progress)} />
 
