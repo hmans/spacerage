@@ -1,5 +1,5 @@
 import { Animate, rotate } from "@hmans/things"
-import { OrbitControls } from "@react-three/drei"
+import { OrbitControls, useGLTF } from "@react-three/drei"
 import { Dust } from "./vfx/Dust"
 
 export const MenuScene = () => (
@@ -12,10 +12,12 @@ export const MenuScene = () => (
     <OrbitControls />
 
     <Animate fun={rotate(0.5, 0.3, -0.2)}>
-      <mesh>
-        <icosahedronGeometry />
-        <meshStandardMaterial color="red" metalness={0.5} roughness={0.7} />
-      </mesh>
+      <Asteroid />
     </Animate>
   </group>
 )
+
+const Asteroid = () => {
+  const gltf = useGLTF("/models/asteroid03.gltf")
+  return <primitive object={gltf.scene} />
+}
