@@ -1,7 +1,5 @@
-import { useConst } from "@hmans/things";
 import { composable, modules } from "material-composer-r3f";
-import { between, plusMinus, upTo } from "randomish";
-import { Layers } from "render-composer";
+import { between, plusMinus } from "randomish";
 import {
   Add,
   Float,
@@ -10,14 +8,12 @@ import {
   InstanceID,
   Mul,
   Rotation3DZ,
-  Time,
-  Vec2,
   Vec3,
 } from "shader-composer";
-import { PSRDNoise2D, Random } from "shader-composer-toybox";
+import { Random } from "shader-composer-toybox";
 import { Color, DoubleSide } from "three";
 import { InstanceSetupCallback } from "vfx-composer";
-import { Emitter, Particles, useParticleAttribute } from "vfx-composer-r3f";
+import { Emitter, Particles } from "vfx-composer-r3f";
 
 export const Dust = () => {
   const id = Float(InstanceID, { varying: true });
