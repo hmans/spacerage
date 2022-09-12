@@ -1,5 +1,5 @@
 import { composable, modules } from "material-composer-r3f"
-import { between, plusMinus } from "randomish"
+import { plusMinus } from "randomish"
 import {
   Add,
   Float,
@@ -9,33 +9,37 @@ import {
   Mul,
   Rotation3DZ,
   ScaleAndOffset,
+  Smoothstep,
   Vec3
 } from "shader-composer"
 import { Random } from "shader-composer-toybox"
 import { Color, DoubleSide } from "three"
 import { InstanceSetupCallback } from "vfx-composer"
-import { Emitter, Particles } from "vfx-composer-r3f"
+import { Emitter, Particles, useParticles } from "vfx-composer-r3f"
 
 /* TODO: extract this into vfx-composer */
 
 export type DustProps = {
-  prespawn?: number
   rate?: number
+  lifetime?: number
 }
 
-export const Dust = ({ rate = 100, prespawn = 1000 }: DustProps) => {
+export const Dust = ({ lifetime = 60, rate = 50 }: DustProps) => {
   const id = Float(InstanceID, { varying: true })
 
   const getRandom = (offset: Input<"float">) => Random(Add(Mul(id, 50), offset))
 
+  const particles = useParticles()
+
   const setup: InstanceSetupCallback = ({ position, rotation, scale }) => {
     position.set(plusMinus(30), plusMinus(30), plusMinus(30))
     rotation.random()
+    particles.setLifetime(lifetime, plusMinus(lifetime))
   }
 
   return (
     <group>
-      <Particles capacity={4000}>
+      <Particles capacity={2 * rate * lifetime}>
         <planeGeometry args={[1, 2]} />
 
         <composable.meshBasicMaterial
@@ -43,6 +47,8 @@ export const Dust = ({ rate = 100, prespawn = 1000 }: DustProps) => {
           color={new Color("white").multiplyScalar(1.1)}
         >
           <modules.Scale scale={ScaleAndOffset(getRandom(765), 0.05, 0.02)} />
+          <modules.Scale scale={Smoothstep(0, 0.05, particles.progress)} />
+          <modules.Scale scale={Smoothstep(1, 0.95, particles.progress)} />
 
           <modules.Rotate
             rotation={Rotation3DZ(Mul(GlobalTime, getRandom(123)))}
@@ -57,9 +63,11 @@ export const Dust = ({ rate = 100, prespawn = 1000 }: DustProps) => {
             time={GlobalTime}
             space="world"
           />
+
+          <modules.Lifetime {...particles} />
         </composable.meshBasicMaterial>
 
-        <Emitter limit={prespawn} rate={Infinity} setup={setup} />
+        <Emitter limit={rate * lifetime} rate={Infinity} setup={setup} />
         <Emitter rate={rate} setup={setup} />
       </Particles>
     </group>
