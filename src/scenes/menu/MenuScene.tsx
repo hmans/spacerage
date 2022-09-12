@@ -1,5 +1,6 @@
 import { Animate, rotate } from "@hmans/things"
 import { OrbitControls, useGLTF } from "@react-three/drei"
+import { AsteroidField } from "./AsteroidField"
 import { Dust } from "./vfx/Dust"
 
 export const MenuScene = () => (
@@ -9,11 +10,9 @@ export const MenuScene = () => (
 
     <Dust />
 
-    <OrbitControls />
+    <OrbitControls autoRotate autoRotateSpeed={0.5} />
 
-    <Animate fun={rotate(0.5, 0.3, -0.2)}>
-      <Asteroid />
-    </Animate>
+    <AsteroidField />
   </group>
 )
 
