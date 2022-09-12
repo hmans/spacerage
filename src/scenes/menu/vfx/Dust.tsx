@@ -8,6 +8,7 @@ import {
   InstanceID,
   Mul,
   Rotation3DZ,
+  ScaleAndOffset,
   Vec3,
 } from "shader-composer";
 import { Random } from "shader-composer-toybox";
@@ -15,7 +16,14 @@ import { Color, DoubleSide } from "three";
 import { InstanceSetupCallback } from "vfx-composer";
 import { Emitter, Particles } from "vfx-composer-r3f";
 
-export const Dust = () => {
+/* TODO: extract this into vfx-composer */
+
+export type DustProps = {
+  prespawn: number;
+  rate: number;
+};
+
+export const Dust = ({ rate = 100, prespawn = 1000 }: DustProps) => {
   const id = Float(InstanceID, { varying: true });
 
   const getRandom = (offset: Input<"float">) =>
@@ -24,7 +32,6 @@ export const Dust = () => {
   const setup: InstanceSetupCallback = ({ position, rotation, scale }) => {
     position.set(plusMinus(30), plusMinus(30), plusMinus(30));
     rotation.random();
-    scale.setScalar(between(0.02, 0.08));
   };
 
   return (
@@ -36,22 +43,25 @@ export const Dust = () => {
           side={DoubleSide}
           color={new Color("white").multiplyScalar(1.1)}
         >
+          <modules.Scale scale={ScaleAndOffset(getRandom(765), 0.05, 0.02)} />
+
           <modules.Rotate
             rotation={Rotation3DZ(Mul(GlobalTime, getRandom(123)))}
           />
 
           <modules.Velocity
-            direction={Mul(
+            direction={ScaleAndOffset(
               Vec3([getRandom(1), getRandom(2), getRandom(3)]),
-              10
+              0.2,
+              -0.1
             )}
             time={GlobalTime}
             space="world"
           />
         </composable.meshBasicMaterial>
 
-        <Emitter limit={1000} rate={Infinity} setup={setup} />
-        <Emitter rate={3} setup={setup} />
+        <Emitter limit={prespawn} rate={Infinity} setup={setup} />
+        <Emitter rate={rate} setup={setup} />
       </Particles>
     </group>
   );
