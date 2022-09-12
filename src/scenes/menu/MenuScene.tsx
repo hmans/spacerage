@@ -6,7 +6,7 @@ import { Dust } from "./vfx/Dust"
 export const MenuScene = () => (
   <group>
     <ambientLight intensity={0.1} />
-    <directionalLight position={[30, 0, -30]} intensity={1} />
+    <directionalLight position={[30, 0, -30]} intensity={2} />
 
     <Dust />
     <Skybox />
