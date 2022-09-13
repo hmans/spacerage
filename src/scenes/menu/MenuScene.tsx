@@ -1,5 +1,6 @@
 import { Animate, rotate } from "@hmans/things"
 import { PerspectiveCamera, useGLTF } from "@react-three/drei"
+import { Vector3 } from "three"
 import { Repeat } from "timeline-composer"
 import { Skybox } from "../../common/Skybox"
 import { Animated } from "../../lib/animation-composer/Animated"
@@ -25,8 +26,16 @@ export const MenuScene = () => (
         <meshStandardMaterial color="red" metalness={0.5} roughness={0.6} />
       </mesh>
 
-      <Repeat seconds={1}>
-        <Animation from={0} to={-5} fun={(o, v) => (o.position.x = v)} />
+      <Repeat seconds={2}>
+        <Animation
+          fun={(o, v) =>
+            o.position.lerpVectors(
+              new Vector3(10, 0, -10),
+              new Vector3(-10, 0, -10),
+              v
+            )
+          }
+        />
       </Repeat>
     </Animated>
 
