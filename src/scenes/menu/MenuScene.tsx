@@ -1,7 +1,7 @@
 import { Animate, rotate } from "@hmans/things"
 import { PerspectiveCamera, useGLTF } from "@react-three/drei"
 import { Vector3 } from "three"
-import { Repeat } from "timeline-composer"
+import { Delay, Repeat } from "timeline-composer"
 import { Skybox } from "../../common/Skybox"
 import { Animated } from "../../lib/animation-composer/Animated"
 import { Animation } from "../../lib/animation-composer/Animation"
@@ -36,6 +36,18 @@ export const MenuScene = () => (
             )
           }
         />
+
+        <Delay seconds={1}>
+          <Animation
+            fun={(o, v) =>
+              o.position.lerpVectors(
+                new Vector3(-10, 0, -10),
+                new Vector3(10, 0, -10),
+                v
+              )
+            }
+          />
+        </Delay>
       </Repeat>
     </Animated>
 
