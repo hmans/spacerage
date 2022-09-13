@@ -23,7 +23,7 @@
     "camera-composer": "^0.0.1",
     "fp-ts": "^2.12.3",
     "input-composer": "^0.0.1",
-    "material-composer": "^0.2.0",
+    "material-composer": "^0.2.1",
     "material-composer-r3f": "^0.2.0",
     "motion": "^10.14.2",
     "popmotion": "^11.0.5",

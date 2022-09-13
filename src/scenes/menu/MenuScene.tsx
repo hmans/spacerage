@@ -17,7 +17,7 @@ export const MenuScene = () => (
     <Dust />
     <Skybox />
     {/* <AsteroidField /> */}
-    <AsteroidBelt position={[10, 0, -50]} />
+    <AsteroidBelt position={[30, 0, -30]} rotation={[0.6, 0, -0.2]} />
 
     {/* <Animate fun={float([1, 2, 3])}>
       <Animate fun={rotate(1, 1.5, -0.5)}>

@@ -13,9 +13,11 @@ import {
   InstanceID,
   Mat3,
   Mul,
+  Pow,
   Rotation3D,
   Rotation3DY,
   ScaleAndOffset,
+  Sub,
   Vec3
 } from "shader-composer"
 import { Random } from "shader-composer-toybox"
@@ -26,37 +28,43 @@ export const AsteroidBelt = (props: GroupProps) => {
 
   const id = Float(InstanceID, { varying: true })
 
-  const random = (offset: Input<"float">) =>
-    Random($`${offset} + ${id} * 100.0`)
+  const random = (offset: Input<"float">) => Random($`${offset} + ${id} * 7.3`)
 
   const setup: InstanceSetupCallback = () => {}
 
   return (
-    <group {...props} rotation={[0.4, 0, -0.4]}>
-      <Particles geometry={mesh.geometry} capacity={10000}>
+    <group {...props}>
+      <Particles geometry={mesh.geometry} capacity={10_000}>
         <composable.material instance={mesh.material as Material}>
+          {/* Rotate the asteroid */}
           <modules.Rotate
             rotation={Mat3(
               Rotation3D(
                 Vec3([random(12), random(84), random(1)]),
-                Mul(GlobalTime, random(-5))
+                Mul(GlobalTime, Sub(random(-5), 0.5))
               )
             )}
           />
 
-          <modules.Scale scale={ScaleAndOffset(random(1), 0.3, 0.1)} />
+          {/* Scale the asteroid */}
+          <modules.Scale scale={ScaleAndOffset(Pow(random(1), 3), 0.3, 0.1)} />
 
+          {/* Apply a random offset (position) */}
           <modules.Translate
-            offset={Vec3([Add(Mul(random(2), 20), 15), Mul(random(123), 4), 0])}
+            offset={Vec3([Add(Mul(random(2), 40), 15), Mul(random(123), 2), 0])}
           />
 
+          {/* Distribute asteroids radially */}
           <modules.Rotate rotation={Rotation3DY(Mul(random(5), Math.PI * 2))} />
+
+          {/* Rotate everything over time */}
           <modules.Rotate
-            rotation={Rotation3DY(Mul(GlobalTime, Mul(random(12), 0.2)))}
+            rotation={Rotation3DY(Mul(GlobalTime, Mul(random(12), 0.05)))}
           />
         </composable.material>
 
-        <Emitter limit={10000} rate={Infinity} setup={setup} />
+        {/* Spawn 10.000 of them! */}
+        <Emitter limit={10_000} rate={Infinity} setup={setup} />
       </Particles>
     </group>
   )
