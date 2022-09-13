@@ -43,19 +43,26 @@ export const MenuScene = () => {
         <PerspectiveCamera makeDefault />
       </Animate>
 
-      <Nebula
+      {/* <Nebula
         dimensions={Vec3([50, 20, 50])}
-        amount={300}
+        amount={50}
         minSize={5}
         maxSize={20}
-        opacity={0.1}
-      />
+        opacity={0.5}
+      /> */}
 
       <Dust />
       <Skybox />
 
       <group position={[30, 0, -30]} rotation={[0.6, 0, -0.2]}>
-        <Nebula dimensions={Vec3([50, 5, 50])} amount={300} opacity={0.2} />
+        <Nebula
+          dimensions={Vec3([40, 10, 40])}
+          amount={100}
+          opacity={0.3}
+          maxSize={20}
+          minSize={10}
+          color={new Color("#fff").multiplyScalar(20)}
+        />
 
         <mesh scale={9}>
           <sphereGeometry />
