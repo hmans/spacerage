@@ -1,6 +1,9 @@
 import { Animate, rotate } from "@hmans/things"
 import { PerspectiveCamera, useGLTF } from "@react-three/drei"
+import { Repeat } from "timeline-composer"
 import { Skybox } from "../../common/Skybox"
+import { Animated } from "../../lib/animation-composer/Animated"
+import { Animation } from "../../lib/animation-composer/Animation"
 import { AsteroidField } from "./AsteroidField"
 import { Dust } from "./vfx/Dust"
 
@@ -16,12 +19,16 @@ export const MenuScene = () => (
       <PerspectiveCamera makeDefault />
     </Animate>
 
-    <Animate position={[3, 3, -10]} fun={rotate(0.1, 0.2, -0.1)}>
+    <Animated position={[3, 3, -10]}>
       <mesh>
         <dodecahedronGeometry />
         <meshStandardMaterial color="red" metalness={0.5} roughness={0.6} />
       </mesh>
-    </Animate>
+
+      <Repeat seconds={1}>
+        <Animation from={0} to={-5} fun={(o, v) => (o.position.x = v)} />
+      </Repeat>
+    </Animated>
 
     <AsteroidField />
   </group>

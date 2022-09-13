@@ -1,8 +1,8 @@
 import { GroupProps } from "@react-three/fiber"
-import { createContext, Ref, useRef } from "react"
+import { createContext, MutableRefObject, useRef } from "react"
 import { Group } from "three"
 
-export const AnimatedContext = createContext<Ref<Group>>(null!)
+export const AnimatedContext = createContext<MutableRefObject<Group>>(null!)
 
 export const Animated = (props: GroupProps) => {
   const group = useRef<Group>(null!)
