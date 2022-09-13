@@ -9,6 +9,7 @@ specifiers:
   '@types/three': ^0.144.0
   '@vitejs/plugin-react': ^2.1.0
   camera-composer: ^0.0.1
+  fp-ts: ^2.12.3
   input-composer: ^0.0.1
   material-composer: ^0.2.0
   material-composer-r3f: ^0.2.0
@@ -35,6 +36,7 @@ dependencies:
   '@react-three/drei': 9.29.1_67uyhnksjibsr7wxhrnlyuwcrm
   '@react-three/fiber': 8.7.3_ww22p6cticflcq7fk2rysgxj34
   camera-composer: 0.0.1_biqbaboplfbrettd7655fr4n2y
+  fp-ts: 2.12.3
   input-composer: 0.0.1
   material-composer: 0.2.0_three@0.144.0
   material-composer-r3f: 0.2.0_ajwca2wyckw7cygscqdaur3aoq

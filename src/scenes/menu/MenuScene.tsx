@@ -1,10 +1,6 @@
-import { Animate, rotate } from "@hmans/things"
-import { PerspectiveCamera, useGLTF } from "@react-three/drei"
-import { Vector3 } from "three"
-import { Delay, Repeat } from "timeline-composer"
+import { PerspectiveCamera } from "@react-three/drei"
 import { Skybox } from "../../common/Skybox"
-import { Animated } from "../../lib/animation-composer/Animated"
-import { Animation } from "../../lib/animation-composer/Animation"
+import { Animate, float, rotate } from "../../lib/animation-composer/Animate"
 import { AsteroidField } from "./AsteroidField"
 import { Dust } from "./vfx/Dust"
 
@@ -20,42 +16,15 @@ export const MenuScene = () => (
       <PerspectiveCamera makeDefault />
     </Animate>
 
-    <Animated position={[3, 3, -10]}>
-      <mesh>
-        <dodecahedronGeometry />
-        <meshStandardMaterial color="red" metalness={0.5} roughness={0.6} />
-      </mesh>
-
-      <Repeat seconds={2}>
-        <Animation
-          fun={(o, v) =>
-            o.position.lerpVectors(
-              new Vector3(10, 0, -10),
-              new Vector3(-10, 0, -10),
-              v
-            )
-          }
-        />
-
-        <Delay seconds={1}>
-          <Animation
-            fun={(o, v) =>
-              o.position.lerpVectors(
-                new Vector3(-10, 0, -10),
-                new Vector3(10, 0, -10),
-                v
-              )
-            }
-          />
-        </Delay>
-      </Repeat>
-    </Animated>
+    <Animate fun={float([1, 2, 3])}>
+      <Animate fun={rotate(1, 1.5, -0.5)}>
+        <mesh>
+          <dodecahedronGeometry />
+          <meshStandardMaterial color="red" metalness={0.5} roughness={0.6} />
+        </mesh>
+      </Animate>
+    </Animate>
 
     <AsteroidField />
   </group>
 )
-
-const Asteroid = () => {
-  const gltf = useGLTF("/models/asteroid03.gltf")
-  return <primitive object={gltf.scene} />
-}
