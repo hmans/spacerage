@@ -57,10 +57,12 @@ export const Nebula = ({
           depthWrite={false}
           color="#ccc"
         >
+          {/* Apply a random rotation */}
           <modules.Rotate
             rotation={Rotation3DZ(Mul(InstanceRandom(9999), Math.PI))}
           />
 
+          {/* Rotate over time */}
           <modules.Rotate
             rotation={pipe(
               InstanceRandom(-87),

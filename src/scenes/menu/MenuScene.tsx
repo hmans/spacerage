@@ -59,6 +59,7 @@ export const MenuScene = () => {
           dimensions={Vec3([40, 10, 40])}
           amount={100}
           opacity={0.3}
+          rotationSpeed={0.05}
           maxSize={20}
           minSize={10}
           color={new Color("#fff").multiplyScalar(20)}
