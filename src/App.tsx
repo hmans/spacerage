@@ -9,7 +9,7 @@ export const App = () => (
     <Loader />
     <RenderCanvas>
       <RenderPipeline
-        bloom={{ luminanceThreshold: 0.2, intensity: 10 }}
+        bloom={{ luminanceThreshold: 0.9, intensity: 10 }}
         antiAliasing
         vignette
       >

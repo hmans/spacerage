@@ -2,6 +2,7 @@ import { PerspectiveCamera } from "@react-three/drei"
 import { Skybox } from "../../common/Skybox"
 import { Animate, float, rotate } from "../../lib/animation-composer/Animate"
 import { AsteroidField } from "./AsteroidField"
+import { AsteroidBelt } from "./vfx/AsteroidBelt"
 import { Dust } from "./vfx/Dust"
 
 export const MenuScene = () => (
@@ -15,7 +16,8 @@ export const MenuScene = () => (
 
     <Dust />
     <Skybox />
-    <AsteroidField />
+    {/* <AsteroidField /> */}
+    <AsteroidBelt position={[10, 0, -50]} />
 
     {/* <Animate fun={float([1, 2, 3])}>
       <Animate fun={rotate(1, 1.5, -0.5)}>
