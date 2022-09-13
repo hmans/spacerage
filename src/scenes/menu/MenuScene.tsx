@@ -30,7 +30,8 @@ export const MenuScene = () => {
     // camera.getWorldQuaternion(tmpQuat)
     // tmpVec3.set(0, 0, -2 * dt).applyQuaternion(tmpQuat)
     // g.position.add(tmpVec3)
-    // g.rotation.z += dt * 0.01
+    // g.rotation.z += dt * 0.005
+    // g.rotation.x += dt * 0.01
   }
 
   return (
