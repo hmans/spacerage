@@ -1,6 +1,6 @@
-import { useGLTF } from "@react-three/drei"
+import { Instance, useGLTF } from "@react-three/drei"
 import { GroupProps } from "@react-three/fiber"
-import { composable, Layer, modules } from "material-composer-r3f"
+import { composable, modules } from "material-composer-r3f"
 import {
   $,
   Add,
@@ -29,9 +29,8 @@ export const AsteroidBelt = (props: GroupProps) => (
 )
 
 const SmallAsteroids = ({ amount = 10_000 }: { amount?: number }) => {
-  const id = Float(InstanceID, { varying: true })
   const random = (offset: Input<"float">) =>
-    Random($`${offset} + ${id} * 1.1005`)
+    Random($`${offset} + float(${InstanceID}) * 1.1005`)
   const setup: InstanceSetupCallback = () => {}
 
   return (
@@ -40,7 +39,7 @@ const SmallAsteroids = ({ amount = 10_000 }: { amount?: number }) => {
 
       <composable.meshStandardMaterial side={DoubleSide} color="#000">
         <modules.Scale scale={ScaleAndOffset(random(0.1), 0.1, 0.01)} />
-        <BeltModules id={id} height={12} />
+        <BeltModules height={12} />
       </composable.meshStandardMaterial>
 
       {/* Spawn 10.000 of them! */}
@@ -73,7 +72,7 @@ const LargeAsteroids = ({ amount = 10_000 }: { amount?: number }) => {
           speed={ScaleAndOffset(random(-5), 2, -1)}
         />
         <modules.Scale scale={ScaleAndOffset(Pow(random(1), 3), 0.3, 0.1)} />
-        <BeltModules id={id} height={6} />
+        <BeltModules height={6} />
       </composable.material>
 
       <Emitter limit={amount} rate={Infinity} setup={setup} />
@@ -92,20 +91,14 @@ const RotateOverTime = ({
 )
 
 type BeltProps = {
-  id: Input<"float">
   width?: Input<"float">
   height?: Input<"float">
   distance?: Input<"float">
 }
 
-const BeltModules = ({
-  id,
-  width = 40,
-  distance = 15,
-  height = 5
-}: BeltProps) => {
+const BeltModules = ({ width = 40, distance = 15, height = 5 }: BeltProps) => {
   const random = (offset: Input<"float">) =>
-    Random($`${offset} + ${id} * 1.1005`)
+    Random($`${offset} + float(${InstanceID}) * 1.1005`)
 
   return (
     <>
