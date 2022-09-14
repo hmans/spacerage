@@ -4,15 +4,15 @@ specifiers:
   '@hmans/things': ^0.0.6
   '@react-three/drei': ^9.29.1
   '@react-three/fiber': ^8.7.3
-  '@types/react': ^18.0.20
+  '@types/react': ^18.0.17
   '@types/react-dom': ^18.0.6
   '@types/three': ^0.144.0
   '@vitejs/plugin-react': ^2.1.0
   camera-composer: ^0.0.1
   fp-ts: ^2.12.3
   input-composer: ^0.0.1
-  material-composer: ^0.2.2
-  material-composer-r3f: ^0.2.2
+  material-composer: ^0.2.1
+  material-composer-r3f: ^0.2.0
   motion: ^10.14.2
   popmotion: ^11.0.5
   postprocessing: ^6.28.7
@@ -20,15 +20,15 @@ specifiers:
   react: ^18.2.0
   react-dom: ^18.2.0
   render-composer: ^0.1.6
-  shader-composer: ^0.4.1
+  shader-composer: ^0.4.0
   shader-composer-r3f: ^0.4.0
   shader-composer-toybox: ^0.1.3
   state-composer: ^0.1.0
   three: ^0.144.0
   timeline-composer: ^0.1.7
   typescript: ^4.6.4
-  vfx-composer: ^0.2.4
-  vfx-composer-r3f: ^0.2.4
+  vfx-composer: ^0.2.3
+  vfx-composer-r3f: ^0.2.3
   vite: ^3.1.0
 
 dependencies:
@@ -38,8 +38,8 @@ dependencies:
   camera-composer: 0.0.1_biqbaboplfbrettd7655fr4n2y
   fp-ts: 2.12.3
   input-composer: 0.0.1
-  material-composer: 0.2.2_three@0.144.0
-  material-composer-r3f: 0.2.2_mads6m3swzjag6futv4wc2qwwm
+  material-composer: 0.2.1_three@0.144.0
+  material-composer-r3f: 0.2.0_kb4cz4w4mk2qo5i5qzjufqurba
   motion: 10.14.2
   popmotion: 11.0.5
   postprocessing: 6.28.7_three@0.144.0
@@ -47,17 +47,17 @@ dependencies:
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   render-composer: 0.1.6_x7lf3l6nugabh2m5btbjyoe5re
-  shader-composer: 0.4.1_three@0.144.0
+  shader-composer: 0.4.0_three@0.144.0
   shader-composer-r3f: 0.4.0_67uyhnksjibsr7wxhrnlyuwcrm
   shader-composer-toybox: 0.1.3_three@0.144.0
   state-composer: 0.1.0_biqbaboplfbrettd7655fr4n2y
   three: 0.144.0
   timeline-composer: 0.1.7_biqbaboplfbrettd7655fr4n2y
-  vfx-composer: 0.2.4_three@0.144.0
-  vfx-composer-r3f: 0.2.4_mads6m3swzjag6futv4wc2qwwm
+  vfx-composer: 0.2.3_three@0.144.0
+  vfx-composer-r3f: 0.2.3_kb4cz4w4mk2qo5i5qzjufqurba
 
 devDependencies:
-  '@types/react': 18.0.20
+  '@types/react': 18.0.19
   '@types/react-dom': 18.0.6
   '@types/three': 0.144.0
   '@vitejs/plugin-react': 2.1.0_vite@3.1.0
@@ -521,7 +521,7 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@material-composer/patch-material/0.1.2_54eaduw6bh22xb767ytpbsciga:
+  /@material-composer/patch-material/0.1.2_6uwgiivsdgt6msqh7sxpzp7eba:
     resolution: {integrity: sha512-QfLpxLFoY4DVRQkS3zsStpSJop6IJvXf2sclprcwntsuCDAztK4Kpr2w/78AdOT+eQ5lMJj62pur2ecz60mVNQ==}
     peerDependencies:
       shader-composer: '>=0.3.4'
@@ -529,11 +529,11 @@ packages:
     dependencies:
       '@hmans/types': 0.0.3
       fp-ts: 2.12.3
-      shader-composer: 0.4.1_three@0.144.0
+      shader-composer: 0.4.0_three@0.144.0
       three: 0.144.0
     dev: false
 
-  /@material-composer/patched/0.1.1_57m5t6hmefawp3q6vtzpq7zqjm:
+  /@material-composer/patched/0.1.1_33f7gfef5c27krsjcyekepjjb4:
     resolution: {integrity: sha512-IvgqRgNJxqRkAhMyd/qX2Zi6aaFH7vfwffaf/U5iGJeRQ9NjII2n4cGOqmQiNNPrfSYnQqlYtgYma6jW7efqpw==}
     peerDependencies:
       '@react-three/fiber': ^8.6.0
@@ -541,7 +541,7 @@ packages:
       three: '>=0.141.0'
     dependencies:
       '@hmans/types': 0.0.3
-      '@material-composer/patch-material': 0.1.2_54eaduw6bh22xb767ytpbsciga
+      '@material-composer/patch-material': 0.1.2_6uwgiivsdgt6msqh7sxpzp7eba
       '@react-three/fiber': 8.7.3_ww22p6cticflcq7fk2rysgxj34
       fp-ts: 2.12.3
       react: 18.2.0
@@ -746,17 +746,17 @@ packages:
   /@types/react-dom/18.0.6:
     resolution: {integrity: sha512-/5OFZgfIPSwy+YuIBP/FgJnQnsxhZhjjrnxudMddeblOouIodEQ75X14Rr4wGSG/bknL+Omy9iWlLo1u/9GzAA==}
     dependencies:
-      '@types/react': 18.0.20
+      '@types/react': 18.0.19
     dev: true
 
   /@types/react-reconciler/0.26.7:
     resolution: {integrity: sha512-mBDYl8x+oyPX/VBb3E638N0B7xG+SPk/EAMcVPeexqus/5aTpTphQi0curhhshOqRrc9t6OPoJfEUkbymse/lQ==}
     dependencies:
-      '@types/react': 18.0.20
+      '@types/react': 18.0.19
     dev: false
 
-  /@types/react/18.0.20:
-    resolution: {integrity: sha512-MWul1teSPxujEHVwZl4a5HxQ9vVNsjTchVA+xRqv/VYGCuKGAU6UhfrTdF5aBefwD1BHUD8i/zq+O/vyCm/FrA==}
+  /@types/react/18.0.19:
+    resolution: {integrity: sha512-BDc3Q+4Q3zsn7k9xZrKfjWyJsSlEDMs38gD1qp2eDazLCdcPqAT+vq1ND+Z8AGel/UiwzNUk8ptpywgNQcJ1MQ==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.2
@@ -1253,8 +1253,8 @@ packages:
       sourcemap-codec: 1.4.8
     dev: true
 
-  /material-composer-r3f/0.2.2_mads6m3swzjag6futv4wc2qwwm:
-    resolution: {integrity: sha512-h5LdkKJ/Ynvfy2pnGPcvgN+yCfjIaW4Js3Y5+ndDlLUU0/yVOuj7ludm6gJXRAHe/CRgVA1tU42iRP8TOwWSFQ==}
+  /material-composer-r3f/0.2.0_kb4cz4w4mk2qo5i5qzjufqurba:
+    resolution: {integrity: sha512-Db5tvOk94znVj1eAaf4kDqa4zwdk2PXLzb1ob6lGBCwP3j+sof9CLiWwMMO1JQbs3dgOrQpchKD9Br9IKSj5Ow==}
     peerDependencies:
       '@react-three/fiber': '>=8.0.27'
       material-composer: '>=0.1.2'
@@ -1266,25 +1266,25 @@ packages:
       '@hmans/use-list': 0.0.1_react@18.2.0
       '@hmans/use-rerender': 0.0.2_react@18.2.0
       '@hmans/use-version': 0.0.2_react@18.2.0
-      '@material-composer/patch-material': 0.1.2_54eaduw6bh22xb767ytpbsciga
-      '@material-composer/patched': 0.1.1_57m5t6hmefawp3q6vtzpq7zqjm
+      '@material-composer/patch-material': 0.1.2_6uwgiivsdgt6msqh7sxpzp7eba
+      '@material-composer/patched': 0.1.1_33f7gfef5c27krsjcyekepjjb4
       '@react-three/fiber': 8.7.3_ww22p6cticflcq7fk2rysgxj34
-      material-composer: 0.2.2_three@0.144.0
+      material-composer: 0.2.1_three@0.144.0
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
-      shader-composer: 0.4.1_three@0.144.0
+      shader-composer: 0.4.0_three@0.144.0
       shader-composer-r3f: 0.4.0_67uyhnksjibsr7wxhrnlyuwcrm
       three: 0.144.0
     dev: false
 
-  /material-composer/0.2.2_three@0.144.0:
-    resolution: {integrity: sha512-gzTwxR1p3+EftbZbHXn2FwcqkLcjk7ff30EYtKnylZS/2IIWq9maFw+CiL4rvSzEc5zBu3Iwyrgwq9NPTrNGNA==}
+  /material-composer/0.2.1_three@0.144.0:
+    resolution: {integrity: sha512-1L04u4EWUPxgrJ462wfTHJIHn4ryoAN9XYDkNouwu3SdrQ/99Z5iMo7OnLjvPMPqfWou4SGHjdguN3By0bQKPw==}
     peerDependencies:
       three: '>=0.141.0'
     dependencies:
-      '@material-composer/patch-material': 0.1.2_54eaduw6bh22xb767ytpbsciga
+      '@material-composer/patch-material': 0.1.2_6uwgiivsdgt6msqh7sxpzp7eba
       fp-ts: 2.12.3
-      shader-composer: 0.4.1_three@0.144.0
+      shader-composer: 0.4.0_three@0.144.0
       shader-composer-toybox: 0.1.3_three@0.144.0
       three: 0.144.0
     dev: false
@@ -1534,7 +1534,7 @@ packages:
       '@react-three/fiber': 8.7.3_ww22p6cticflcq7fk2rysgxj34
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
-      shader-composer: 0.4.1_three@0.144.0
+      shader-composer: 0.4.0_three@0.144.0
       three: 0.144.0
     dev: false
 
@@ -1544,12 +1544,12 @@ packages:
       three: '>=0.141.0'
     dependencies:
       fp-ts: 2.12.3
-      shader-composer: 0.4.1_three@0.144.0
+      shader-composer: 0.4.0_three@0.144.0
       three: 0.144.0
     dev: false
 
-  /shader-composer/0.4.1_three@0.144.0:
-    resolution: {integrity: sha512-dCA2NfIKlRS4PIqusAmDz+s82MhTp59A96oxtgI3erhpP6I5O0Kkq1QygxMbNcNP7nZ4tvBKp4jqGYvOzmIB8w==}
+  /shader-composer/0.4.0_three@0.144.0:
+    resolution: {integrity: sha512-iEAe7sTzlgo0GQG7UM5laFle3XPFYwYIBjU6tS4M4sEmIx5tx8/+ePg9OpwRxtVZDwOIv8pzHOIYGmNI9K5Hpg==}
     peerDependencies:
       three: '>=0.141.0'
     dependencies:
@@ -1721,8 +1721,8 @@ packages:
     engines: {node: '>= 4'}
     dev: false
 
-  /vfx-composer-r3f/0.2.4_mads6m3swzjag6futv4wc2qwwm:
-    resolution: {integrity: sha512-l2db/w9nTMcUQPLvIJtX48TOCKRKP/rl4G4tO16JgbE3VzdQiOhcUUHzxeTynw5oHJ1yClauaqZM2hNsoI3gGQ==}
+  /vfx-composer-r3f/0.2.3_kb4cz4w4mk2qo5i5qzjufqurba:
+    resolution: {integrity: sha512-aqlEW4uTC0SVf/L6b806ijCx0+Yj+jLDs75ocxtQgRQG1VMNG3r3wuMM7vAARGU0rPa/8Noq09O1Wl4KRVYdew==}
     peerDependencies:
       '@react-three/fiber': '>=8.0.27'
       react: '>=18.1.0'
@@ -1733,24 +1733,24 @@ packages:
       '@hmans/use-rerender': 0.0.2_react@18.2.0
       '@hmans/use-version': 0.0.2_react@18.2.0
       '@react-three/fiber': 8.7.3_ww22p6cticflcq7fk2rysgxj34
-      material-composer-r3f: 0.2.2_mads6m3swzjag6futv4wc2qwwm
+      material-composer-r3f: 0.2.0_kb4cz4w4mk2qo5i5qzjufqurba
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
-      shader-composer: 0.4.1_three@0.144.0
+      shader-composer: 0.4.0_three@0.144.0
       shader-composer-r3f: 0.4.0_67uyhnksjibsr7wxhrnlyuwcrm
       three: 0.144.0
-      vfx-composer: 0.2.4_three@0.144.0
+      vfx-composer: 0.2.3_three@0.144.0
     transitivePeerDependencies:
       - material-composer
     dev: false
 
-  /vfx-composer/0.2.4_three@0.144.0:
-    resolution: {integrity: sha512-/zELWCkPBe/1OH8037UFZKKU0vbfPejgd59QzvRwUzTEaY4ZItwrovl2OVorP/YYE7esWaqL5LiPZZRCEFOYnQ==}
+  /vfx-composer/0.2.3_three@0.144.0:
+    resolution: {integrity: sha512-7L0YvkdixtSep44j7NGdDx0j3oC0PhdF/S7hTn/88C9c74iYjSFvdqxtjjqm0N2Atw2D9cGXU433oaK/kWKsSQ==}
     peerDependencies:
       three: '>=0.141.0'
     dependencies:
-      material-composer: 0.2.2_three@0.144.0
-      shader-composer: 0.4.1_three@0.144.0
+      material-composer: 0.2.1_three@0.144.0
+      shader-composer: 0.4.0_three@0.144.0
       three: 0.144.0
     dev: false
 
