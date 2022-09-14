@@ -108,7 +108,7 @@ const BeltModules = ({
     Random($`${offset} + ${id} * 1.1005`)
 
   return (
-    <Layer>
+    <>
       {/* Apply a random offset (position) */}
       <modules.Translate
         offset={Vec3([
@@ -123,8 +123,10 @@ const BeltModules = ({
 
       {/* Rotate everything over time */}
       <modules.Rotate
-        rotation={Rotation3DY(Mul(GlobalTime, Mul(random(0.25), 0.05)))}
+        rotation={Rotation3DY(
+          Mul(GlobalTime, ScaleAndOffset(Pow(random(0.25), 3), 0.05, 0.01))
+        )}
       />
-    </Layer>
+    </>
   )
 }
