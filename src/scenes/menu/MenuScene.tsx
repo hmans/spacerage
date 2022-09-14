@@ -6,16 +6,12 @@ import { Vec3 } from "shader-composer"
 import { Color, Quaternion, Vector3 } from "three"
 import { Skybox } from "../../common/Skybox"
 import {
-  Animate,
   AnimateUpdateCallback,
   rotate
 } from "../../lib/animation-composer/Animate"
 import { AsteroidBelt } from "./vfx/AsteroidBelt"
 import { Dust } from "./vfx/Dust"
 import { Nebula } from "./vfx/Nebula"
-
-const tmpVec3 = new Vector3()
-const tmpQuat = new Quaternion()
 
 export const MenuScene = () => {
   const { sun } = useRenderPipeline()
@@ -25,13 +21,18 @@ export const MenuScene = () => {
     sun.scale.setScalar(150)
   }, [])
 
-  const animateCamera: AnimateUpdateCallback = (g, dt, { camera }) => {
-    rotate(0, -0.05, 0)(g, dt)
-    // camera.getWorldQuaternion(tmpQuat)
-    // tmpVec3.set(0, 0, -2 * dt).applyQuaternion(tmpQuat)
-    // g.position.add(tmpVec3)
-    // g.rotation.z += dt * 0.005
-    // g.rotation.x += dt * 0.01
+  const animateCamera = () => (): AnimateUpdateCallback => {
+    const tmpVec3 = new Vector3()
+    const tmpQuat = new Quaternion()
+
+    return (g, dt, { camera }) => {
+      rotate(0, -0.05, 0)(g, dt)
+      // camera.getWorldQuaternion(tmpQuat)
+      // tmpVec3.set(0, 0, -2 * dt).applyQuaternion(tmpQuat)
+      // g.position.add(tmpVec3)
+      // g.rotation.z += dt * 0.005
+      // g.rotation.x += dt * 0.01
+    }
   }
 
   return (
@@ -39,17 +40,11 @@ export const MenuScene = () => {
       <ambientLight intensity={0.1} />
       <directionalLight position={[30, 0, -30]} intensity={2} />
 
-      <Animate position={[0, 0, 10]} fun={animateCamera}>
+      {/* <Animate position={[0, 0, 10]} fun={animateCamera()}>
         <PerspectiveCamera makeDefault />
-      </Animate>
+      </Animate> */}
 
-      {/* <Nebula
-        dimensions={Vec3([50, 20, 50])}
-        amount={50}
-        minSize={5}
-        maxSize={20}
-        opacity={0.5}
-      /> */}
+      <PerspectiveCamera position={[0, 0, 20]} rotation-y={-0.8} makeDefault />
 
       <Dust />
       <Skybox />
@@ -66,7 +61,7 @@ export const MenuScene = () => {
         />
 
         <mesh scale={9}>
-          <sphereGeometry />
+          <sphereGeometry args={[1, 32, 32]} />
 
           <composable.meshStandardMaterial
             color="brown"
