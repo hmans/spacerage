@@ -42,7 +42,7 @@ export const MenuScene = () => {
     }
   }
 
-  const [sun, setSun] = useState<Mesh | null>(null)
+  const { sun } = useStore(store)
 
   return (
     <group>
@@ -74,7 +74,14 @@ export const MenuScene = () => {
       {/* <OrbitControls /> */}
 
       {/* "Sun" */}
-      <mesh ref={setSun} position={[275, 10, -200]}>
+      <mesh
+        ref={(sun) => {
+          // TODO: well, we can certainly make THIS better somehow...
+          console.log("SUN!", sun)
+          if (sun) store.set({ sun })
+        }}
+        position={[275, 10, -200]}
+      >
         <sphereGeometry args={[40]} />
         <meshBasicMaterial color={new Color("#fff").multiplyScalar(1)} />
       </mesh>
