@@ -1,6 +1,5 @@
-import { OrbitControls, PerspectiveCamera } from "@react-three/drei"
+import { PerspectiveCamera } from "@react-three/drei"
 import { composable, modules } from "material-composer-r3f"
-import { useLayoutEffect, useState } from "react"
 import {
   bitmask,
   EffectPass,
@@ -8,7 +7,6 @@ import {
   Layers,
   SelectiveBloomEffect,
   SMAAEffect,
-  useRenderPipeline,
   VignetteEffect
 } from "render-composer"
 import { Vec3 } from "shader-composer"
@@ -48,7 +46,7 @@ export const MenuScene = () => {
     <group>
       <EffectPass>
         <SMAAEffect />
-        <SelectiveBloomEffect intensity={2} luminanceThreshold={0.9} />
+        <SelectiveBloomEffect intensity={4} luminanceThreshold={0.5} />
         {sun && <GodRaysEffect lightSource={sun} />}
         <VignetteEffect />
       </EffectPass>
@@ -74,14 +72,7 @@ export const MenuScene = () => {
       {/* <OrbitControls /> */}
 
       {/* "Sun" */}
-      <mesh
-        ref={(sun) => {
-          // TODO: well, we can certainly make THIS better somehow...
-          console.log("SUN!", sun)
-          if (sun) store.set({ sun })
-        }}
-        position={[275, 10, -200]}
-      >
+      <mesh ref={(sun) => store.set({ sun })} position={[275, 10, -200]}>
         <sphereGeometry args={[40]} />
         <meshBasicMaterial color={new Color("#fff").multiplyScalar(1)} />
       </mesh>
