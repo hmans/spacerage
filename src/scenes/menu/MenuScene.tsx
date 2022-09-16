@@ -58,11 +58,11 @@ export const MenuScene = () => {
 
       <group position={[30, 0, -30]} rotation={[0.6, 0, -0.2]}>
         <Nebula
-          dimensions={Vec3([40, 10, 40])}
-          amount={100}
+          dimensions={Vec3([30, 10, 30])}
+          amount={20}
           opacity={0.3}
           rotationSpeed={0.05}
-          maxSize={20}
+          maxSize={30}
           minSize={10}
           color={new Color("#fff").multiplyScalar(20)}
         />
