@@ -1,6 +1,7 @@
 import { Loader } from "@react-three/drei"
 import { Suspense } from "react"
 import * as RC from "render-composer"
+import { PostProcessing } from "./PostProcessing"
 import { MenuScene } from "./scenes/menu/MenuScene"
 import { GameState } from "./state"
 
@@ -9,13 +10,7 @@ export const App = () => (
     <Loader />
     <RC.Canvas dpr={1}>
       <RC.RenderPipeline>
-        <RC.EffectPass>
-          <RC.SelectiveBloomEffect />
-          <RC.SMAAEffect />
-          {/* {sun && <RC.GodRaysEffect lightSource={sun} />} */}
-          <RC.VignetteEffect />
-        </RC.EffectPass>
-
+        <PostProcessing />
         <Suspense>
           <GameState.Match state="menu">
             <MenuScene />

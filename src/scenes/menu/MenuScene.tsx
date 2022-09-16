@@ -1,29 +1,17 @@
 import { PerspectiveCamera } from "@react-three/drei"
 import { composable, modules } from "material-composer-r3f"
-import {
-  bitmask,
-  EffectPass,
-  GodRaysEffect,
-  Layers,
-  SelectiveBloomEffect,
-  SMAAEffect,
-  VignetteEffect
-} from "render-composer"
+import { bitmask, Layers } from "render-composer"
 import { Vec3 } from "shader-composer"
-import { makeStore, useStore } from "statery"
-import { Color, Mesh, Quaternion, Vector3 } from "three"
+import { Color, Quaternion, Vector3 } from "three"
 import { Skybox } from "../../common/Skybox"
 import {
   AnimateUpdateCallback,
   rotate
 } from "../../lib/animation-composer/Animate"
+import { store } from "../../PostProcessing"
 import { AsteroidBelt } from "./vfx/AsteroidBelt"
 import { Dust } from "./vfx/Dust"
 import { Nebula } from "./vfx/Nebula"
-
-const store = makeStore({
-  sun: null as Mesh | null
-})
 
 export const MenuScene = () => {
   const animateCamera = () => (): AnimateUpdateCallback => {
@@ -40,17 +28,8 @@ export const MenuScene = () => {
     }
   }
 
-  const { sun } = useStore(store)
-
   return (
     <group>
-      <EffectPass>
-        <SMAAEffect />
-        <SelectiveBloomEffect intensity={4} luminanceThreshold={0.5} />
-        {sun && <GodRaysEffect lightSource={sun} />}
-        <VignetteEffect />
-      </EffectPass>
-
       <ambientLight
         intensity={0.1}
         layers-mask={bitmask(Layers.Default, Layers.TransparentFX)}
