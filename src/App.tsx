@@ -7,7 +7,7 @@ import { GameState } from "./state"
 export const App = () => (
   <>
     <Loader />
-    <RC.Canvas>
+    <RC.Canvas dpr={1}>
       <RC.RenderPipeline>
         <RC.EffectPass>
           <RC.SelectiveBloomEffect />
