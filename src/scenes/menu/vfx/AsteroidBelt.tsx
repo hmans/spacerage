@@ -52,9 +52,8 @@ const LargeAsteroids = ({ amount = 10_000 }: { amount?: number }) => {
   const gltf = useGLTF("/models/asteroid03.gltf")
   const mesh = gltf.scene.children[0] as Mesh
 
-  const id = Float(InstanceID, { varying: true })
-
-  const random = (offset: Input<"float">) => Random($`${offset} + ${id} * 7.3`)
+  const random = (offset: Input<"float">) =>
+    Random($`${offset} + float(${InstanceID}) * 7.3`)
 
   const setup: InstanceSetupCallback = () => {}
 
@@ -72,6 +71,7 @@ const LargeAsteroids = ({ amount = 10_000 }: { amount?: number }) => {
           speed={ScaleAndOffset(random(-5), 2, -1)}
         />
         <modules.Scale scale={ScaleAndOffset(Pow(random(1), 3), 0.3, 0.1)} />
+
         <BeltModules height={6} />
       </composable.material>
 
