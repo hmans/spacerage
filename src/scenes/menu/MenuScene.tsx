@@ -1,9 +1,19 @@
-import { PerspectiveCamera } from "@react-three/drei"
+import { OrbitControls, PerspectiveCamera } from "@react-three/drei"
 import { composable, modules } from "material-composer-r3f"
-import { useLayoutEffect } from "react"
-import { useRenderPipeline } from "render-composer"
+import { useLayoutEffect, useState } from "react"
+import {
+  bitmask,
+  EffectPass,
+  GodRaysEffect,
+  Layers,
+  SelectiveBloomEffect,
+  SMAAEffect,
+  useRenderPipeline,
+  VignetteEffect
+} from "render-composer"
 import { Vec3 } from "shader-composer"
-import { Color, Quaternion, Vector3 } from "three"
+import { makeStore, useStore } from "statery"
+import { Color, Mesh, Quaternion, Vector3 } from "three"
 import { Skybox } from "../../common/Skybox"
 import {
   AnimateUpdateCallback,
@@ -13,14 +23,11 @@ import { AsteroidBelt } from "./vfx/AsteroidBelt"
 import { Dust } from "./vfx/Dust"
 import { Nebula } from "./vfx/Nebula"
 
+const store = makeStore({
+  sun: null as Mesh | null
+})
+
 export const MenuScene = () => {
-  const { sun } = useRenderPipeline()
-
-  useLayoutEffect(() => {
-    sun.position.set(1200, 50, -1000)
-    sun.scale.setScalar(150)
-  }, [])
-
   const animateCamera = () => (): AnimateUpdateCallback => {
     const tmpVec3 = new Vector3()
     const tmpQuat = new Quaternion()
@@ -35,10 +42,26 @@ export const MenuScene = () => {
     }
   }
 
+  const [sun, setSun] = useState<Mesh | null>(null)
+
   return (
     <group>
-      <ambientLight intensity={0.1} />
-      <directionalLight position={[30, 0, -30]} intensity={2} />
+      <EffectPass>
+        <SMAAEffect />
+        <SelectiveBloomEffect intensity={2} luminanceThreshold={0.9} />
+        {sun && <GodRaysEffect lightSource={sun} />}
+        <VignetteEffect />
+      </EffectPass>
+
+      <ambientLight
+        intensity={0.1}
+        layers-mask={bitmask(Layers.Default, Layers.TransparentFX)}
+      />
+      <directionalLight
+        position={[30, 0, -30]}
+        intensity={2}
+        layers-mask={bitmask(Layers.Default, Layers.TransparentFX)}
+      />
 
       {/* <Animate position={[0, 0, 10]} fun={animateCamera()}>
         <PerspectiveCamera makeDefault />
@@ -48,6 +71,13 @@ export const MenuScene = () => {
 
       <Dust />
       <Skybox />
+      {/* <OrbitControls /> */}
+
+      {/* "Sun" */}
+      <mesh ref={setSun} position={[275, 10, -200]}>
+        <sphereGeometry args={[40]} />
+        <meshBasicMaterial color={new Color("#fff").multiplyScalar(1)} />
+      </mesh>
 
       <group position={[30, 0, -30]} rotation={[0.6, 0, -0.2]}>
         <Nebula

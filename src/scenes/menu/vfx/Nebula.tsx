@@ -2,7 +2,7 @@ import { useTexture } from "@react-three/drei"
 import { GroupProps } from "@react-three/fiber"
 import { pipe } from "fp-ts/function"
 import { composable, modules } from "material-composer-r3f"
-import { Layers, useRenderPipeline } from "render-composer"
+import { bitmask, Layers, useRenderPipeline } from "render-composer"
 import {
   Add,
   Float,
@@ -49,7 +49,7 @@ export const Nebula = ({
 
   return (
     <group {...props}>
-      <Particles layers-mask={Layers.TransparentFX} capacity={amount}>
+      <Particles layers-mask={bitmask(Layers.TransparentFX)} capacity={amount}>
         <planeGeometry />
         <composable.meshStandardMaterial
           map={texture}
