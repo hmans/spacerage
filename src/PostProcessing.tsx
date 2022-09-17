@@ -1,5 +1,5 @@
 import * as RC from "render-composer"
-import { makeStore, useStore } from "statery"
+import { makeStore, useStore } from "./lib/statery"
 import { Mesh } from "three"
 
 export const store = makeStore({

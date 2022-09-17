@@ -2,6 +2,7 @@ import { PerspectiveCamera } from "@react-three/drei"
 import { composable, modules } from "material-composer-r3f"
 import { bitmask, Layers } from "render-composer"
 import { Vec3 } from "shader-composer"
+import { useStore } from "../../lib/statery"
 import { Color, Quaternion, Vector3 } from "three"
 import { Skybox } from "../../common/Skybox"
 import {
@@ -28,6 +29,9 @@ export const MenuScene = () => {
     }
   }
 
+  const { sun } = useStore(store)
+  console.log(sun)
+
   return (
     <group>
       <ambientLight
@@ -51,7 +55,12 @@ export const MenuScene = () => {
       {/* <OrbitControls /> */}
 
       {/* "Sun" */}
-      <mesh ref={(sun) => store.set({ sun })} position={[275, 10, -200]}>
+      <mesh
+        ref={(sun) => {
+          if (store.state.sun !== sun) store.set({ sun })
+        }}
+        position={[275, 10, -200]}
+      >
         <sphereGeometry args={[40]} />
         <meshBasicMaterial color={new Color("#fff").multiplyScalar(1)} />
       </mesh>
