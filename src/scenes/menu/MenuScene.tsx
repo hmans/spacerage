@@ -1,18 +1,30 @@
 import { PerspectiveCamera } from "@react-three/drei"
 import { composable, modules } from "material-composer-r3f"
+import { useCallback } from "react"
 import { bitmask, Layers } from "render-composer"
 import { Vec3 } from "shader-composer"
-import { useStore } from "../../lib/statery"
 import { Color, Quaternion, Vector3 } from "three"
 import { Skybox } from "../../common/Skybox"
 import {
   AnimateUpdateCallback,
   rotate
 } from "../../lib/animation-composer/Animate"
+import { IState, Store } from "../../lib/statery"
 import { store } from "../../PostProcessing"
 import { AsteroidBelt } from "./vfx/AsteroidBelt"
 import { Dust } from "./vfx/Dust"
 import { Nebula } from "./vfx/Nebula"
+
+/* WIP experimental capture hook */
+const useCapture = <S extends IState, K extends keyof S>(
+  store: Store<S>,
+  key: K
+) => {
+  return useCallback(
+    (value: S[K]) => store.set({ [key]: value } as S),
+    [store, key]
+  )
+}
 
 export const MenuScene = () => {
   const animateCamera = () => (): AnimateUpdateCallback => {
@@ -28,9 +40,6 @@ export const MenuScene = () => {
       // g.rotation.x += dt * 0.01
     }
   }
-
-  // const { sun } = useStore(store)
-  // console.log(sun)
 
   return (
     <group>
@@ -55,12 +64,7 @@ export const MenuScene = () => {
       {/* <OrbitControls /> */}
 
       {/* "Sun" */}
-      <mesh
-        ref={(sun) => {
-          if (store.state.sun !== sun) store.set({ sun })
-        }}
-        position={[275, 10, -200]}
-      >
+      <mesh ref={useCapture(store, "sun")} position={[275, 10, -200]}>
         <sphereGeometry args={[40]} />
         <meshBasicMaterial color={new Color("#fff").multiplyScalar(1)} />
       </mesh>
