@@ -29,8 +29,8 @@ export const MenuScene = () => {
     }
   }
 
-  const { sun } = useStore(store)
-  console.log(sun)
+  // const { sun } = useStore(store)
+  // console.log(sun)
 
   return (
     <group>
