@@ -9,7 +9,7 @@ import {
   AnimateUpdateCallback,
   rotate
 } from "../../lib/animation-composer/Animate"
-import { IState, Store } from "../../lib/statery"
+import { IState, Store } from "statery"
 import { store } from "../../PostProcessing"
 import { AsteroidBelt } from "./vfx/AsteroidBelt"
 import { Dust } from "./vfx/Dust"
