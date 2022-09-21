@@ -1,24 +1,17 @@
-import { useThree } from "@react-three/fiber"
-import { useEffect } from "react"
-import { CubeTextureLoader } from "three"
+import { Environment } from "@react-three/drei"
 
 export const Skybox = () => {
-  const { scene } = useThree()
-
-  useEffect(() => {
-    const urls = [
-      "/textures/skybox/right.png",
-      "/textures/skybox/left.png",
-      "/textures/skybox/top.png",
-      "/textures/skybox/bottom.png",
-      "/textures/skybox/front.png",
-      "/textures/skybox/back.png"
-    ]
-
-    const cube = new CubeTextureLoader().load(urls)
-
-    scene.background = cube
-  }, [])
-
-  return null
+  return (
+    <Environment
+      background="only"
+      files={[
+        "/textures/skybox/right.png",
+        "/textures/skybox/left.png",
+        "/textures/skybox/top.png",
+        "/textures/skybox/bottom.png",
+        "/textures/skybox/front.png",
+        "/textures/skybox/back.png"
+      ]}
+    />
+  )
 }
